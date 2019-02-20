@@ -32,7 +32,7 @@ namespace Exercise3
         {
             if (carIsDead)
             {
-                if (listOfHandlers != null)
+                if (Exploded != null)
                 {
                     Exploded(this, new CarEventArgs("Sorry this car is dead"));
                 }
@@ -42,7 +42,7 @@ namespace Exercise3
                 CurrentSpeed += change;
             }
 
-            if ((MaxSpeed - CurrentSpeed) == 10 && listOfHandlers != null)
+            if ((MaxSpeed - CurrentSpeed) == 10 && AboutToBlow != null)
             {
                 AboutToBlow(this, new CarEventArgs("Careful, nearly maxed out"));
             }

@@ -10,7 +10,7 @@ namespace Exercise3
     {
         static void Main(string[] args)
         {
-
+            //Exercises 3 & 4 are contained in this project.
             Car c1 = new Car("SlugBug", 100, 10);
 
             c1.AboutToBlow += OnCarEngineEvent;
