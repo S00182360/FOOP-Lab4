@@ -10,12 +10,61 @@ namespace Exercise1
     {
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
+            //BinaryOp del1 = new BinaryOp(SimpleMaths.Add);
+            //BinaryOp del2 = new BinaryOp(SimpleMaths.Subtract);
+
+            //del1 += del2;
+
+            //DoWork(del1);
+
+            Car c1 = new Car("SlugBug", 100, 10);
+
+            c1.listOfHandlers += new CarEngineHandler(OnCarEngineEvent);
+            c1.listOfHandlers += OnCarEngineEvent2;
+
+            for (int i = 0; i < 6; i++)
+            {
+                c1.Accelerate(20);
+            }
+
             Console.ReadKey();
 
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
         }
+
+        static void DoWork(BinaryOp del)
+        {
+            del(20, 10);
+        }
+
+        static void OnCarEngineEvent(string msg)
+        {
+            Console.WriteLine("Message from Car Object\n");
+            Console.WriteLine(msg);
+            Console.WriteLine("**********************************");
+        }
+
+        static void OnCarEngineEvent2(string msg)
+        {
+            Console.WriteLine(msg.ToUpper());
+        }
+
+    }
+
+    public delegate void BinaryOp(int x, int y);
+
+    public class SimpleMaths
+    {
+        public static void Add(int x, int y)
+        {
+            Console.WriteLine("The sum of {0} and {1} is {2}", x, y, (x + y));
+        }
+
+        public static void Subtract(int x, int y)
+        {
+            Console.WriteLine("The difference of {0} and {1} is {2}", x, y, (x - y));
+        }
+
     }
 }
+
+
